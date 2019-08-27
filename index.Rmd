@@ -1,0 +1,68 @@
+---
+title: "a Presentation on quakes APP built using Shiny"
+author: "Tanmoy Rath"
+date: "27 August 2019"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## App Overview
+
+Shiny App Link: <a href="https://tanmoy.shinyapps.io/quakes/" target="_blank">https://tanmoy.shinyapps.io/quakes/</a><br/>Github (ui.R/server.R) Link: <a href="https://github.com/Tanmoy-Rath/developingdataproducts" target="_blank">https://github.com/Tanmoy-Rath/developingdataproducts</a>
+
+This Presentation is about an RStudio Shiny application, that plots various scatterplots of the quakes dataset, and in turn shows/explores the relationship among the different columns of the quakes data-frame.
+
+The app contains 4 widgets (in the sidebar panel) to take inputs from user and plot the desired ggplot2 scatter-plot.
+
+<center>
+<img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/x.jpg">
+<img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/y.jpg">
+<img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/color.jpg">
+<img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/smooth.jpg">
+</center>
+
+The widgets themselves are self-explanatory, however you are further encouraged to visit the app's in-built documentation for more details.
+
+
+## quakes dataset & High-correlation
+
+```{r, echo = TRUE}
+library(ggplot2); str(quakes)
+```
+
+The app shows that there is a high positive correlation among **mag**(magnitude of earthquakes) and **stations**(no. of stations reporting the event)
+
+<center>
+<img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/plot1.jpg", height="450px", width="80%">
+</center>
+
+```{r, echo = FALSE}
+suppressMessages(library(corrplot))
+suppressMessages(library(Hmisc))
+```
+
+## Correlation calculation with p-values
+
+mag-stations correlation(=0.85) is highest. Correlations with insignificant p-values(> 0.05) are crossed.
+```{r, echo = TRUE, eval=FALSE}
+library(corrplot); library(Hmisc)
+res <- rcorr(as.matrix(quakes))
+col <- colorRampPalette(c("#0000FF", "#00FFFF", "#FFFFFF", "#FFFF00", "#FF0000"))
+corrplot(res$r, method="color", addCoef.col = "black", tl.col="black", diag=FALSE, p.mat = res$P,
+         sig.level = 0.05, type="upper", col=col(256), tl.srt=45)
+```
+
+<center>
+<img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/plot2.jpg">
+</center>
+
+## Insights revealed by color variable
+
+In the lat-long scatter-plot, colouring by depth, clearly separates **areas of high & low depth**. Areas of low depth are extremely dangerous, since the focus/source/origin of the earthquake is much closer to earth surface.
+
+<center>
+<img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/plot3.jpg", height="450px", width="80%">
+</center>

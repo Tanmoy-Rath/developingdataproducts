@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## App Overview
 
-Shiny App Link: <a href="https://tanmoy.shinyapps.io/quakes/" target="_blank">https://tanmoy.shinyapps.io/quakes/</a><br/>Github (ui.R/server.R) Link: <a href="https://github.com/Tanmoy-Rath/developingdataproducts" target="_blank">https://github.com/Tanmoy-Rath/developingdataproducts</a>
+Shiny App Link: **<a href="https://tanmoy.shinyapps.io/quakes/" target="_blank">https://tanmoy.shinyapps.io/quakes/</a>**<br/>ui.R/server.R Link: **<a href="https://github.com/Tanmoy-Rath/developingdataproducts" target="_blank">https://github.com/Tanmoy-Rath/developingdataproducts</a>**
 
 This Presentation is about an RStudio Shiny application, that plots various scatterplots of the quakes dataset, and in turn shows/explores the relationship among the different columns of the quakes data-frame.
 
@@ -61,7 +61,7 @@ corrplot(res$r, method="color", addCoef.col = "black", tl.col="black", diag=FALS
 
 ## Insights revealed by color variable
 
-In the lat-long scatter-plot, colouring by depth, clearly separates **areas of high & low depth**. Areas of low depth are extremely dangerous, since the focus/source/origin of the earthquake is much closer to earth surface.
+In the lat-long scatter-plot, colouring by depth, clearly separates **areas of high & low depth** (high = yellow, low = blue). Areas of low depth (blue) are extremely dangerous, since the focus/source/origin of the earthquake is much closer to earth surface.
 
 <center>
 <img src="https://github.com/Tanmoy-Rath/test-repo/raw/master/plot3.jpg", height="450px", width="80%">
